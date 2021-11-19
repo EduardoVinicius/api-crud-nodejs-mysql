@@ -9,5 +9,6 @@ router.get('/cars', CarController.getAll);
 router.get('/car/:id', CarController.getCar);
 router.post('/car', CarController.insert);
 router.put('/car/:id', CarController.alter);
+router.delete('/car/:id', CarController.remove);
 
 module.exports = router;

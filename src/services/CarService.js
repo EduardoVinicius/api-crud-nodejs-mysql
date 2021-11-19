@@ -54,5 +54,17 @@ module.exports = {
                 accepted(results);
             });
         });
+    },
+
+    remove: (id) => {
+        return new Promise((accepted, rejected) => {
+            db.query('DELETE FROM cars WHERE id = ?', [id], (error, results) => {
+                if (error) {
+                    rejected(error);
+                    return;
+                }
+                accepted(results);
+            });
+        });
     }
 };

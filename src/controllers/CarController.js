@@ -72,4 +72,11 @@ module.exports = {
         res.json(json);
     },
 
+    remove: async (req, res) => {
+        let json = { error: '', result: {} };
+
+        await CarService.remove(req.params.id);
+
+        res.json(json);
+    }
 }
