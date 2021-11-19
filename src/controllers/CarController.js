@@ -14,5 +14,18 @@ module.exports = {
         }
 
         res.json(json);
+    },
+
+    getCar: async (req, res) => {
+        let json = { error: '', result: {} };
+
+        let id = req.params.id;
+        let car = await CarService.getCar(id);
+
+        if (car) {
+            json.result = car;
+        }
+
+        res.json(json);
     }
 }
