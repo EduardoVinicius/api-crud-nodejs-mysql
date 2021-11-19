@@ -28,5 +28,18 @@ module.exports = {
                 } 
             });
         });
+    },
+
+    insert: (model, plate) => {
+        return new Promise((accepted, rejected) => {
+            db.query('INSERT INTO cars (model, plate) VALUES (?, ?)', [model, plate], (error, results) => {
+                if (error) {
+                    rejected(error);
+                    return;
+                }
+
+                accepted(results.insertCode);
+            });
+        });
     }
 };

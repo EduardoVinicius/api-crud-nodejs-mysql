@@ -27,5 +27,26 @@ module.exports = {
         }
 
         res.json(json);
+    },
+
+    insert: async (req, res) => {
+        let json = { error: '', result: {} };
+
+        let model = req.body.model;
+        let plate = req.body.plate;
+
+
+        if (model && plate) {
+            let CarId = await CarService.insert(model, plate);
+            json.result = {
+                id: CarId,
+                model,
+                plate
+            };
+        } else {
+            json.error = 'Fields not sent';
+        }
+
+        res.json(json);
     }
 }
