@@ -14,7 +14,6 @@ connection.connect((error) => {
     if (error) {
         throw error;
     }
-
     console.log(`Connected to database ${process.env.DB_NAME}`);
 });
 
