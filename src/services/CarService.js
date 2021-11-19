@@ -38,7 +38,20 @@ module.exports = {
                     return;
                 }
 
-                accepted(results.insertCode);
+                accepted(results.insertId);
+            });
+        });
+    },
+
+    alter: (id, model, plate) => {
+        return new Promise((accepted, rejected) => {
+            db.query('UPDATE cars SET model = ?, plate = ? WHERE id = ?', [model, plate, id], (error, results) => {
+                if (error) {
+                    rejected(error);
+                    return;
+                }
+
+                accepted(results);
             });
         });
     }

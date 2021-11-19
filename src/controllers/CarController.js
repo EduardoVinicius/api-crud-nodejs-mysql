@@ -48,5 +48,28 @@ module.exports = {
         }
 
         res.json(json);
-    }
+    },
+
+    alter: async (req, res) => {
+        let json = { error: '', result: {} };
+
+        let id = req.params.id;
+        let model = req.body.model;
+        let plate = req.body.plate;
+
+
+        if (id && model && plate) {
+            await CarService.alter(id, model, plate);
+            json.result = {
+                id,
+                model,
+                plate
+            };
+        } else {
+            json.error = 'Fields not sent';
+        }
+
+        res.json(json);
+    },
+
 }
